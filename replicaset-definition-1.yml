@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+  labels:
+    run: kubia
+spec:
+  template:
+    metadata:
+      name: myapp
+      labels:
+        run: kubia
+    spec:
+      containers:
+        - name: kubia
+          image: kubia:v0.1
+  replicas: 2
+  selector:
+    matchLabels:
+      run: kubia
