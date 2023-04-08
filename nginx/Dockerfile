@@ -1,7 +1,5 @@
 FROM nginx:latest
 
-WORKDIR /app
+COPY ./entrypoint.sh /docker-entrypoint.d/my-entrypoint.sh
 
-COPY ./entrypoint.sh ./entrypoint.sh
-
-RUN ./entrypoint.sh
+RUN chmod +x /docker-entrypoint.d/my-entrypoint.sh
